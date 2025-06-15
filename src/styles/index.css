@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-foreground font-sans min-h-screen;
+}
+
+
+
+/* Chaque slide prend une largeur fixe et s'aligne */
+.slick-slide > div {
+  display: flex;
+  justify-content: center;
+}
+
+.project-card {
+  width: 100%;
+  max-width: 300px;
+}
+
+
+
