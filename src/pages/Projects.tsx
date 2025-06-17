@@ -7,13 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 const projets = [
   {
     id: 1,
-    titre: "SAE SQL — Freedom in the World",
-    image: `${import.meta.env.BASE_URL}sql_project_preview.png`,
-    descriptionCourte: "Création et interrogation d'une base de données PostgreSQL à partir d’un CSV.",
-    descriptionDetaillee: `Dans le cadre d’un projet universitaire, j’ai conçu une base de données relationnelle sur le degré de liberté des pays. 
-Ce projet m’a permis de modéliser les entités (régions, pays, types de libertés...), de créer les tables SQL à la main et via un AGL, d’importer les données depuis un fichier CSV et de manipuler la base avec des requêtes complexes.`,
-    pdf: `${import.meta.env.BASE_URL}SAE_SQL.pdf`,
-    github: "#",
+    titre: "SAE S3 — Application de Gestion des Stages",
+    image: `${import.meta.env.BASE_URL}php_project_preview.png`,
+    descriptionCourte: "Développement d'une application web de gestion des stages de BUT Informatique.",
+    descriptionDetaillee: `Ce projet complet a impliqué la conception et le développement d'une plateforme de gestion des stages destinée aux étudiants du BUT Informatique. L'application inclut : suivi des étapes du stage, tableaux de bord pour chaque profil (étudiant, tuteur pédagogique, entreprise), notifications automatisées, et gestion documentaire. Le tout en utilisant PHP, SQL, HTML/CSS et une méthodologie de gestion de projet agile.`,
+    pdf: `${import.meta.env.BASE_URL}SAE_S301.pdf`,
+    github: "https://github.com/DevKosX/GestionDesStagesProject",
     zip: "#"
   },
   {
@@ -39,18 +38,19 @@ Le projet couvrait la conception de classes, la gestion d'erreurs, l'encapsulati
   },
   {
     id: 4,
-    titre: "SAE S3 — Application de Gestion des Stages",
-    image: `${import.meta.env.BASE_URL}php_project_preview.png`,
-    descriptionCourte: "Développement d'une application web de gestion des stages de BUT Informatique.",
-    descriptionDetaillee: `Ce projet complet a impliqué la conception et le développement d'une plateforme de gestion des stages destinée aux étudiants du BUT Informatique. L'application inclut : suivi des étapes du stage, tableaux de bord pour chaque profil (étudiant, tuteur pédagogique, entreprise), notifications automatisées, et gestion documentaire. Le tout en utilisant PHP, SQL, HTML/CSS et une méthodologie de gestion de projet agile.`,
-    pdf: `${import.meta.env.BASE_URL}SAE_S301.pdf`,
-    github: "https://github.com/DevKosX/GestionDesStagesProject",
+    titre: "SAE SQL — Freedom in the World",
+    image: `${import.meta.env.BASE_URL}sql_project_preview.png`,
+    descriptionCourte: "Création et interrogation d'une base de données PostgreSQL à partir d’un CSV.",
+    descriptionDetaillee: `Dans le cadre d’un projet universitaire, j’ai conçu une base de données relationnelle sur le degré de liberté des pays. 
+Ce projet m’a permis de modéliser les entités (régions, pays, types de libertés...), de créer les tables SQL à la main et via un AGL, d’importer les données depuis un fichier CSV et de manipuler la base avec des requêtes complexes.`,
+    pdf: `${import.meta.env.BASE_URL}SAE_SQL.pdf`,
+    github: "#",
     zip: "#"
   },
 ];
 
 const ProjectCard: React.FC<{ project: typeof projets[0]; onClick: () => void }> = ({ project, onClick }) => (
-  <div className="project-card bg-darkpanel p-4 h-[380px] flex flex-col justify-between items-center rounded-lg shadow text-white border border-gray-700">
+  <div className="project-card bg-darkpanel p-4 h-[380px] flex flex-col justify-between items-center rounded-lg shadow text-white border border-gray-700 font-mono">
     <img src={project.image} alt={project.titre} className="w-full h-40 object-cover rounded mb-4" />
     <h3 className="text-lg font-semibold text-primary text-center">{project.titre}</h3>
     <p className="text-sm text-gray-300 text-center mt-2">{project.descriptionCourte}</p>
@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projets" className="min-h-screen px-6 py-16 text-white flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-10 text-primary text-center">Mes Projets</h2>
+      <h2 className="text-3xl font-bold mb-10 text-primary text-center font-mono">Mes Projets</h2>
       <div className="w-full max-w-6xl mx-auto">
         <Slider {...settings}>
           {projets.map((p) => (

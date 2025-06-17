@@ -11,7 +11,8 @@ export default {
         background: "#000000",
         foreground: "#e5e5e5",
         darkpanel: "#121212",
-        accent: "#1b8030",
+        //accent: "#1b8030",
+        accent: "#0080FF",
       },
       fontFamily: {
         sans: ['"Inter"', 'sans-serif'],

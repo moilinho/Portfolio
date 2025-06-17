@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import ConstellationBackground from "./components/ConstellationBackground";
 import { Contact as ContactIcon } from "lucide-react";
 import Projects from "./pages/Projects";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Formation />
           <Projects />
           <Contact />
+          <Footer />
         </main>
       </div>
     </>

@@ -29,8 +29,8 @@ const Contact: React.FC = () => {
       id="contact"
       className="min-h-screen px-6 py-16 text-white flex flex-col items-center justify-center"
     >
-      <h2 className="text-3xl font-bold mb-2 text-primary text-center">Contactez-moi</h2>
-      <p className="mb-10 text-gray-300 text-center">
+      <h2 className="text-3xl font-bold mb-2 text-primary text-center font-mono">Contactez-moi</h2>
+      <p className="mb-10 text-gray-300 text-center font-mono">
         N'hésitez pas à me contacter, je vous répondrai dans les plus brefs délais.
       </p>
 

@@ -7,14 +7,14 @@ const About: React.FC = () => {
   return (
     <section
       id="presentation"
-      className="min-h-screen flex flex-col justify-center items-center px-6 text-foreground"
+      className="min-h-screen flex flex-col justify-center items-center px-6 text-foreground font-mono"
     >
       <div className="max-w-3xl text-center">
         <h1 className="text-4xl font-bold mb-4 text-primary font-mono drop-shadow">
           Bonjour, je suis Moilim ABDALLAH
         </h1>
 
-        <p className="mt-4 text-lg leading-relaxed">
+        <p className="mt-4 text-lg leading-relaxed font-mono">
           Je suis actuellement en deuxième année de <strong>BUT Informatique</strong> à l’<strong>Université Sorbonne Paris Nord</strong>, au sein de l’<strong>IUT de Villetaneuse</strong>. 
           Depuis mes débuts dans le développement web, je suis animé par une véritable curiosité pour le fonctionnement des technologies qui nous entourent. 
           Passionné par le code, l’innovation et le design d’interfaces, je m’efforce de créer des solutions élégantes, utiles et performantes.
@@ -24,7 +24,7 @@ const About: React.FC = () => {
 
         <button
           onClick={() => setShowCV(!showCV)}
-          className="mt-8 px-6 py-3 bg-accent text-white font-semibold rounded-md hover:bg-foreground hover:text-black transition duration-300"
+          className="mt-8 px-6 py-3 bg-accent text-white font-semibold rounded-md hover:bg-foreground hover:text-black transition duration-300 font-mono"
         >
           {showCV ? "Masquer mon CV" : "Voir mon CV"}
         </button>
@@ -40,7 +40,7 @@ const About: React.FC = () => {
     <a
       href={cvImageUrl}
       download
-      className="mt-4 px-5 py-2 bg-white text-black font-semibold rounded hover:bg-foreground hover:text-white transition"
+      className="mt-4 px-5 py-2 bg-white text-black font-semibold rounded hover:bg-foreground hover:text-white transition font-mono"
     >
       Télécharger le CV
     </a>

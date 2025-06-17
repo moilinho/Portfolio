@@ -4,14 +4,14 @@ const Formation: React.FC = () => {
   return (
     <section
       id="formation"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-transparent text-gray-100"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-transparent text-gray-100 font-mono"
     >
       <div className="max-w-4xl w-full">
-        <h2 className="text-3xl font-bold mb-10 text-primary text-center">
+        <h2 className="text-3xl font-bold mb-10 text-primary text-center font-mono">
           Mon Parcours
         </h2>
 
-        <div className="space-y-8">
+        <div className="space-y-8 font-mono">
 
           {/* BUT Informatique */}
           <div className="bg-accent rounded-xl p-6 shadow-md text-white">
