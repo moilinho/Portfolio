@@ -32,13 +32,14 @@ const competences = {
 
 const Competences: React.FC = () => {
   return (
-    <section id="competences" className="min-h-screen px-6 py-16 text-white bg-transparent font-mono">
+    <section id="competences" className="min-h-screen px-6 py-24 text-white bg-transparent font-mono">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2 
-          className="text-3xl font-bold mb-12 text-primary"
+          className="text-4xl font-bold mb-20 text-primary"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
           Mes Compétences
         </motion.h2>
@@ -46,23 +47,27 @@ const Competences: React.FC = () => {
         {Object.entries(competences).map(([category, items], i) => (
           <motion.div 
             key={category} 
-            className="mb-12"
+            className="mb-20 last:mb-0"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-semibold text-gray-300 mb-6 text-center">{category}</h3>
-            <div className="flex flex-wrap justify-center gap-8">
+            <h3 className="text-2xl font-semibold text-gray-300 mb-10 text-center border-b border-white/10 pb-4 inline-block px-10">
+              {category}
+            </h3>
+            <div className="flex flex-wrap justify-center gap-10 md:gap-14">
               {items.map(({ name, icon }) => (
                 <motion.div 
                   key={name} 
-                  className="flex flex-col items-center w-24"
-                  whileHover={{ scale: 1.1, rotate: 3 }}
+                  className="flex flex-col items-center w-28"
+                  whileHover={{ scale: 1.15 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <img src={icon} alt={name} className="w-12 h-12 mb-2 object-contain drop-shadow-md" />
-                  <span className="text-sm text-gray-200 text-center">{name}</span>
+                  <div className="bg-white/5 p-4 rounded-xl mb-3 shadow-inner">
+                    <img src={icon} alt={name} className="w-12 h-12 object-contain drop-shadow-md" />
+                  </div>
+                  <span className="text-sm text-gray-300 text-center font-medium leading-tight">{name}</span>
                 </motion.div>
               ))}
             </div>

@@ -7,7 +7,19 @@ import "slick-carousel/slick/slick-theme.css";
 const projets = [
   {
     id: 1,
-    titre: "SAE S3 — Application de Gestion des Stages",
+    titre: "SAE S5 — Graye : App de découverte culinaire",
+    image: `${import.meta.env.BASE_URL}graye_project_preview.png`,
+    descriptionCourte: "Conception et développement d'une application mobile pour aider les étudiants à trouver où manger.",
+    descriptionDetaillee: `Développée en équipe dans le cadre du BUT Informatique, Graye est une solution ciblée pour la vie étudiante. 
+    L'application propose un système d'onboarding personnalisé (régimes spéciaux, cuisines préférées), une carte interactive pour la géolocalisation des restaurants et une "Graye List" permettant de gérer ses établissements favoris. 
+    Ce projet a mis l'accent sur une identité visuelle forte (Duo Violet/Orange) et une expérience utilisateur optimisée pour se démarquer des applications de restauration classiques.`,
+    pdf: `${import.meta.env.BASE_URL}RapportCommunication.pdf`,
+    github: "https://github.com/RobertGriffaton/SAES55",
+    zip: "#"
+  },
+  {
+    id: 2,
+    titre: "SAE S3 — Gestion des Stages",
     image: `${import.meta.env.BASE_URL}php_project_preview.png`,
     descriptionCourte: "Développement d'une application web de gestion des stages de BUT Informatique.",
     descriptionDetaillee: `Ce projet complet a impliqué la conception et le développement d'une plateforme de gestion des stages destinée aux étudiants du BUT Informatique. L'application inclut : suivi des étapes du stage, tableaux de bord pour chaque profil (étudiant, tuteur pédagogique, entreprise), notifications automatisées, et gestion documentaire. Le tout en utilisant PHP, SQL, HTML/CSS et une méthodologie de gestion de projet agile.`,
@@ -16,62 +28,87 @@ const projets = [
     zip: "#"
   },
   {
-    id: 2,
+    id: 3,
     titre: "SAE Java — Calculatrice Orientée Objet",
     image: `${import.meta.env.BASE_URL}java_project_preview.png`,
     descriptionCourte: "Création d'une calculatrice Java orientée objet gérant les opérations de base.",
-    descriptionDetaillee: `Dans ce projet, j'ai mis en pratique les principes de la programmation orientée objet en développant une calculatrice en Java. 
-Le projet couvrait la conception de classes, la gestion d'erreurs, l'encapsulation des données et une interface simple via le terminal.`,
+    descriptionDetaillee: `Dans ce projet, j'ai mis en pratique les principes de la programmation orientée objet en développant une calculatrice en Java. Le projet couvrait la conception de classes, la gestion d'erreurs et l'encapsulation des données.`,
     pdf: `${import.meta.env.BASE_URL}SAE_JAVA.pdf`,
     github: "#",
     zip: `${import.meta.env.BASE_URL}SAE_JAVA.zip`
   },
   {
-    id: 3,
-    titre: "SAE Python — Optimisation de la tournée du Père Noël",
+    id: 4,
+    titre: "SAE Python — Tournée Noël",
     image: `${import.meta.env.BASE_URL}python_project_preview.png`,
     descriptionCourte: "Algorithmes Python pour l'optimisation des itinéraires de distribution.",
-    descriptionDetaillee: `Dans ce projet, nous avons conçu un algorithme permettant d'optimiser les tournées du Père Noël selon différents critères logistiques, en utilisant Python et des techniques telles que le backtracking ou des heuristiques de graphes.`,
+    descriptionDetaillee: `Conception d'un algorithme optimisant les tournées selon différents critères logistiques, en utilisant Python et des techniques de graphes et heuristiques.`,
     pdf: "#",
     github: "#",
     zip: `${import.meta.env.BASE_URL}SAE_PYTHON.zip`
   },
   {
-    id: 4,
-    titre: "SAE SQL — Freedom in the World",
+    id: 5,
+    titre: "SAE SQL — Freedom",
     image: `${import.meta.env.BASE_URL}sql_project_preview.png`,
     descriptionCourte: "Création et interrogation d'une base de données PostgreSQL à partir d’un CSV.",
-    descriptionDetaillee: `Dans le cadre d’un projet universitaire, j’ai conçu une base de données relationnelle sur le degré de liberté des pays. 
-Ce projet m’a permis de modéliser les entités (régions, pays, types de libertés...), de créer les tables SQL à la main et via un AGL, d’importer les données depuis un fichier CSV et de manipuler la base avec des requêtes complexes.`,
+    descriptionDetaillee: `Modélisation d'une base de données relationnelle sur le degré de liberté des pays. Création des tables SQL, importation de données CSV et requêtes complexes.`,
     pdf: `${import.meta.env.BASE_URL}SAE_SQL.pdf`,
     github: "#",
     zip: "#"
   },
 ];
 
+// --- Composants de flèches personnalisés pour éviter les doublons ---
+const NextArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <div 
+      className="absolute top-1/2 -right-8 z-10 -translate-y-1/2 cursor-pointer p-2 hover:scale-125 transition bg-black/20 rounded-full hover:bg-black/40"
+      onClick={onClick}
+    >
+      <ArrowRight color="white" size={30} />
+    </div>
+  );
+};
+
+const PrevArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <div 
+      className="absolute top-1/2 -left-8 z-10 -translate-y-1/2 cursor-pointer p-2 hover:scale-125 transition bg-black/20 rounded-full hover:bg-black/40"
+      onClick={onClick}
+    >
+      <ArrowLeft color="white" size={30} />
+    </div>
+  );
+};
+
 const ProjectCard: React.FC<{ project: typeof projets[0]; onClick: () => void }> = ({ project, onClick }) => (
-  <div className="project-card bg-darkpanel p-4 h-[380px] flex flex-col justify-between items-center rounded-lg shadow text-white border border-gray-700 font-mono">
-    <img src={project.image} alt={project.titre} className="w-full h-40 object-cover rounded mb-4" />
-    <h3 className="text-lg font-semibold text-primary text-center">{project.titre}</h3>
-    <p className="text-sm text-gray-300 text-center mt-2">{project.descriptionCourte}</p>
-    <div className="mt-4 w-full flex justify-center">
-      <button onClick={onClick} className="px-4 py-2 bg-accent text-white rounded hover:bg-foreground hover:text-black transition">
-        Voir plus
+  <div className="mx-4 bg-darkpanel p-6 h-[450px] flex flex-col rounded-2xl shadow-lg text-white border border-white/5 font-mono hover:border-primary/50 transition-colors group">
+    <div className="overflow-hidden rounded-xl mb-6 h-48">
+      <img src={project.image} alt={project.titre} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+    </div>
+    <h3 className="text-xl font-bold text-primary mb-4">{project.titre}</h3>
+    <p className="text-sm text-gray-400 line-clamp-3 mb-6">{project.descriptionCourte}</p>
+    <div className="mt-auto">
+      <button onClick={onClick} className="w-full py-3 bg-accent text-white rounded-lg hover:bg-white hover:text-black transition-all font-bold">
+        Détails du projet
       </button>
     </div>
   </div>
 );
 
 const ProjectModal: React.FC<{ project: typeof projets[0]; onClose: () => void }> = ({ project, onClose }) => (
-  <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-    <div className="bg-darkpanel max-w-2xl w-full p-6 rounded-lg shadow-xl relative text-white">
-      <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
-      <h2 className="text-2xl font-bold text-primary mb-4">{project.titre}</h2>
-      <p className="text-gray-200 whitespace-pre-line mb-4">{project.descriptionDetaillee}</p>
-      <div className="flex gap-4 flex-wrap">
-        {project.pdf && <a href={project.pdf} target="_blank" rel="noreferrer" className="underline text-blue-400">Voir le compte rendu</a>}
-        {project.github !== "#" && <a href={project.github} target="_blank" rel="noreferrer" className="underline text-blue-400">Voir sur GitHub</a>}
-        {project.zip !== "#" && <a href={project.zip} download className="underline text-blue-400">Télécharger le ZIP</a>}
+  <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[100] p-6">
+    <div className="bg-darkpanel max-w-2xl w-full p-8 rounded-2xl shadow-2xl relative text-white border border-white/10 animate-fade-in-up">
+      <button onClick={onClose} className="absolute top-6 right-6 text-gray-400 hover:text-white text-2xl">✕</button>
+      <h2 className="text-3xl font-bold text-primary mb-6">{project.titre}</h2>
+      <p className="text-gray-200 leading-relaxed text-lg mb-8">{project.descriptionDetaillee}</p>
+      <div className="flex gap-4 flex-wrap pt-6 border-t border-white/10">
+        {project.pdf && project.pdf !== "#" && <a href={project.pdf} target="_blank" rel="noreferrer" className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-md border border-blue-600/30 hover:bg-blue-600/30 transition">Compte-rendu PDF</a>}
+        {project.github !== "#" && <a href={project.github} target="_blank" rel="noreferrer" className="px-4 py-2 bg-white/10 text-white rounded-md border border-white/20 hover:bg-white/20 transition">GitHub</a>}
+        {project.zip !== "#" && <a href={project.zip} download className="px-4 py-2 bg-green-600/20 text-green-400 rounded-md border border-green-600/30 hover:bg-green-600/30 transition">Télécharger ZIP</a>}
       </div>
     </div>
   </div>
@@ -82,33 +119,25 @@ const Projects: React.FC = () => {
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: Math.min(3, projets.length),
+    slidesToShow: 3,
     slidesToScroll: 1,
-    centerMode: projets.length < 3,
-    centerPadding: "0px",
+    nextArrow: <NextArrow />, // On passe le composant directement
+    prevArrow: <PrevArrow />, // Slick lui injectera automatiquement onClick
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: Math.min(2, projets.length), centerMode: projets.length < 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 1, centerMode: false },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } }, // Désactive les flèches sur petit mobile pour gagner de la place
     ],
-    nextArrow: <ArrowRight color="white" />, 
-    prevArrow: <ArrowLeft color="white" />,
   };
 
   return (
-    <section id="projets" className="min-h-screen px-6 py-16 text-white flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-10 text-primary text-center font-mono">Mes Projets</h2>
-      <div className="w-full max-w-6xl mx-auto">
+    <section id="projets" className="min-h-screen px-6 py-24 text-white flex flex-col items-center">
+      <h2 className="text-4xl font-bold mb-16 text-primary text-center font-mono uppercase tracking-widest">Mes Projets</h2>
+      <div className="w-full max-w-6xl mx-auto relative px-4">
         <Slider {...settings}>
           {projets.map((p) => (
-            <div key={p.id} className="flex justify-center">
+            <div key={p.id}>
               <ProjectCard project={p} onClick={() => setSelected(p)} />
             </div>
           ))}
